@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VivaMais — Plano de saúde acessível para a terceira idade</title>
+  <meta name="description" content="VivaMais é um plano de saúde com interface acessível. Agende consultas médicas de forma simples, com texto grande, alto contraste e tradução em Libras.">
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+  <!-- Cabeçalho padronizado -->
+  <header class="topo">
+    <div class="topo-interno">
+      <a class="marca" href="index.html">
+        <span class="logo" aria-hidden="true">V+</span>
+        <span class="nome">VivaMais<span class="sub">Plano de saúde acessível</span></span>
+        <span class="sr-only">— ir para a página inicial</span>
+      </a>
+      <nav aria-label="Menu principal">
+        <ul class="menu">
+          <li><a href="index.html" aria-current="page">Início</a></li>
+          <li><a href="login.html">Entrar</a></li>
+          <li><a href="passo1-especialidade.html">Agendar consulta</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+
+    <h1>Cuidar da sua saúde ficou simples</h1>
+    <p class="destaque">
+      No VivaMais você marca uma consulta médica em poucos passos, com texto grande,
+      cores de alto contraste e ajuda sempre no mesmo lugar. Sem pressa e sem complicação.
+    </p>
+
+    <div class="acoes" style="margin-bottom:40px">
+      <a class="botao botao-primario" href="login.html">
+        Agendar uma consulta
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+
+    <!-- Artigo com conteúdo e imagem reais -->
+    <article class="cartao">
+      <div class="grade-2">
+        <div>
+          <p class="destaque" style="color:var(--blue);font-weight:700;margin-bottom:6px">VIDA SAUDÁVEL</p>
+          <h2>Movimento em qualquer idade</h2>
+          <p>
+            A atividade física regular ajuda a preservar a mobilidade, a independência e o
+            bem-estar. Não é preciso treinar pesado: caminhar, dançar ou cuidar das plantas
+            já traz benefícios para o corpo e para a cabeça.
+          </p>
+          <p>
+            Comece devagar e escolha atividades de que você goste. Uma pequena caminhada
+            diária, feita com constância, faz diferença na pressão, no sono e na disposição.
+            Antes de intensificar os exercícios, converse com o seu médico — e isso você
+            pode resolver agora, marcando uma consulta.
+          </p>
+          <div class="acoes">
+            <a class="botao botao-secundario" href="passo1-especialidade.html">Marcar avaliação com um médico</a>
+          </div>
+        </div>
+        <figure>
+          <img src="img/senhora-jardim.jpg"
+               alt="Senhora idosa de cabelos grisalhos sorrindo ao conversar com uma mulher mais jovem, que apoia a mão em seu ombro, em um jardim ao entardecer."
+               width="1200" height="800">
+          <figcaption class="credito">Imagem: Pexels — uso livre sob a Licença Pexels.</figcaption>
+        </figure>
+      </div>
+    </article>
+
+    <h2>Por que o VivaMais é diferente</h2>
+    <div class="grade-2">
+      <section class="cartao" aria-labelledby="b1">
+        <h3 id="b1">Passo a passo, sem pressa</h3>
+        <p style="margin-bottom:0">
+          Cada tela pede uma decisão de cada vez e mostra em que etapa você está. Se a sessão
+          for expirar, avisamos antes e deixamos você pedir mais tempo.
+        </p>
+      </section>
+      <section class="cartao" aria-labelledby="b2">
+        <h3 id="b2">Você no controle</h3>
+        <p style="margin-bottom:0">
+          Aumente a fonte, ligue o alto contraste ou reduza as animações na barra do topo.
+          Prefere Libras? O tradutor fica sempre disponível no canto da tela.
+        </p>
+      </section>
+    </div>
+
+  </main>
+
+  <!-- Rodapé padronizado, com créditos de imagem -->
+  <footer class="rodape">
+    <div class="rodape-interno">
+      <div>
+        <h2>VivaMais</h2>
+        <p style="margin:0">Projeto acadêmico — SCC0580 Acessibilidade em Sistemas Computacionais, ICMC-USP.</p>
+      </div>
+      <div class="creditos-img">
+        <strong>Créditos das imagens</strong> (todas de uso livre sob a Licença Pexels):<br>
+        Senhora idosa com acompanhante no jardim — Pexels (<a href="https://www.pexels.com">pexels.com</a>).<br>
+        Médica com estetoscópio — <a href="https://www.pexels.com/photo/3768131/">Pexels, foto 3768131</a>.
+      </div>
+      <p style="margin:0;font-size:0.82em">© VivaMais · <a href="#conteudo">Voltar ao topo</a></p>
+    </div>
+  </footer>
+
+  <script src="js/layout.js"></script>
+  <script src="js/acessibilidade.js"></script>
+</body>
+</html>

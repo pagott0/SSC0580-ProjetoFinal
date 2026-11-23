@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Consulta agendada — VivaMais</title>
+  <meta name="description" content="Sua consulta foi agendada com sucesso no VivaMais.">
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+  <header class="topo">
+    <div class="topo-interno">
+      <a class="marca" href="index.html">
+        <span class="logo" aria-hidden="true">V+</span>
+        <span class="nome">VivaMais<span class="sub">Plano de saúde acessível</span></span>
+        <span class="sr-only">— ir para a página inicial</span>
+      </a>
+      <nav aria-label="Menu principal">
+        <ul class="menu">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="login.html">Entrar</a></li>
+          <li><a href="passo1-especialidade.html">Agendar consulta</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo" class="centralizado">
+
+    <div class="sucesso-icone" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+
+    <h1>Consulta agendada!</h1>
+    <p class="destaque">
+      Tudo certo. Enviamos os detalhes para você e, um dia antes, mandaremos um lembrete.
+    </p>
+
+    <div class="cartao" style="max-width:560px;margin-left:auto;margin-right:auto;text-align:left">
+      <h2>Detalhes da sua consulta</h2>
+      <ul class="resumo" id="resumo-final">
+        <li><span class="rotulo-dado">Especialidade</span><span class="valor-dado" id="f-especialidade">—</span></li>
+        <li><span class="rotulo-dado">Médico</span><span class="valor-dado" id="f-medico">—</span></li>
+        <li><span class="rotulo-dado">Data</span><span class="valor-dado" id="f-data">—</span></li>
+        <li><span class="rotulo-dado">Horário</span><span class="valor-dado" id="f-hora">—</span></li>
+        <li><span class="rotulo-dado">Local</span><span class="valor-dado">Clínica Central — Rua das Flores, 120</span></li>
+      </ul>
+    </div>
+
+    <div class="acoes">
+      <a class="botao botao-primario" href="index.html">Voltar ao início</a>
+    </div>
+
+  </main>
+
+  <footer class="rodape">
+    <div class="rodape-interno">
+      <p style="margin:0">VivaMais · Projeto acadêmico SCC0580 — ICMC-USP · <a href="#conteudo">Voltar ao topo</a></p>
+    </div>
+  </footer>
+
+  <script src="js/layout.js"></script>
+  <script src="js/acessibilidade.js"></script>
+  <script src="js/fluxo.js"></script>
+</body>
+</html>

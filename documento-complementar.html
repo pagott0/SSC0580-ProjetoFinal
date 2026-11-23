@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Documento complementar — Projeto final VivaMais</title>
+<style>
+  @page { size: A4; margin: 2cm 2.2cm; }
+  * { box-sizing: border-box; }
+  body { font-family: "Georgia", "Times New Roman", serif; color: #111; line-height: 1.5; font-size: 11.5pt; }
+  h1 { font-size: 20pt; margin: 0 0 4px; }
+  h2 { font-size: 14pt; margin: 22px 0 8px; border-bottom: 2px solid #1d4ed8; padding-bottom: 4px; color: #16307d; }
+  h3 { font-size: 12pt; margin: 14px 0 4px; color: #1b3aa8; }
+  p, li { font-size: 11pt; }
+  .capa { text-align: center; margin-bottom: 8px; }
+  .sub { color: #444; font-size: 11pt; }
+  .meta { font-size: 10.5pt; color: #333; margin-top: 10px; }
+  table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 10pt; }
+  th, td { border: 1px solid #bbb; padding: 6px 8px; text-align: left; vertical-align: top; }
+  th { background: #e8f0fe; }
+  code { font-family: "Courier New", monospace; background: #f1f3f8; padding: 1px 4px; border-radius: 3px; font-size: 10pt; }
+  .decl { border: 1.5px solid #1d4ed8; background: #f3f7ff; padding: 12px 16px; border-radius: 8px; }
+  .link { color: #1d4ed8; word-break: break-all; }
+  ul { margin: 6px 0 10px; }
+  .pequeno { font-size: 10pt; color: #555; }
+</style>
+</head>
+<body>
+
+<div class="capa">
+  <p class="sub">Universidade de São Paulo — Instituto de Ciências Matemáticas e de Computação</p>
+  <h1>VivaMais — Plano de saúde acessível</h1>
+  <p class="sub">Documento complementar do projeto final<br>
+  SCC0580 — Acessibilidade em Sistemas Computacionais</p>
+  <p class="meta">Profa. Kamila Rios da Hora Rodrigues<br>
+  Felipe Oliveira Carvalho (14613879) · Nícolas Martins de Oliveira (14600902) · Enzo Vasconcellos Pagotto (13632844)<br>
+  São Carlos — SP, 2026</p>
+</div>
+
+<h2>1. Contexto, personas e o que mudou em relação às entregas anteriores</h2>
+<p>
+  O VivaMais é a implementação front-end de um plano de saúde voltado a pessoas idosas e também
+  pensado para pessoas autistas. Mantivemos o cenário e as personas das entregas anteriores:
+  <strong>Dona Neuza (74 anos)</strong>, com baixo letramento digital, tremores nas mãos e lapsos de
+  memória recente; e <strong>Sr. Antônio (65 anos)</strong>, com catarata e glaucoma iniciais (baixa
+  visão e perda de sensibilidade ao contraste).
+</p>
+<p>
+  As entregas anteriores apresentavam uma página-vitrine que <em>explicava</em> critérios de
+  acessibilidade em painéis comparativos. O projeto final transforma esse material em uma
+  <strong>aplicação de verdade</strong>: o usuário percorre um fluxo completo de tarefa (o caminho
+  feliz) e consegue usar toda a solução. Também incluímos, pela primeira vez, a cobertura explícita
+  para pessoas autistas, que não existia nas entregas anteriores.
+</p>
+
+<h2>2. O fluxo do usuário-alvo (caminho feliz)</h2>
+<p>O usuário deve seguir este fluxo, do início ao fim, para realizar a tarefa principal — agendar uma consulta médica:</p>
+<ol>
+  <li><strong>Início</strong> (<code>index.html</code>): conhece a solução e inicia o agendamento.</li>
+  <li><strong>Entrar</strong> (<code>login.html</code>): informa CPF (com máscara) e senha; há validação com mensagens de erro e aviso de limite de tempo ajustável.</li>
+  <li><strong>Passo 1 — Especialidade</strong> (<code>passo1-especialidade.html</code>): escolhe a especialidade em um grupo de opções acessível.</li>
+  <li><strong>Passo 2 — Médico e horário</strong> (<code>passo2-agendamento.html</code>): escolhe médico, data e horário; o sistema salva rascunho automaticamente.</li>
+  <li><strong>Passo 3 — Confirmar</strong> (<code>passo3-confirmar.html</code>): revê o resumo e confirma.</li>
+  <li><strong>Sucesso</strong> (<code>sucesso.html</code>): recebe a confirmação do agendamento.</li>
+</ol>
+<p>
+  O desenho é <strong>linear</strong>, com uma decisão por tela e uma trilha de navegação
+  (“Passo X de 3”) sempre visível — exatamente a recomendação do nosso documento sobre pessoas
+  idosas para reduzir a sobrecarga cognitiva.
+</p>
+
+<h2>3. Elementos de acessibilidade explícitos na interface</h2>
+<p>Uma barra fixa no topo, presente em todas as páginas, oferece controles <strong>funcionais</strong> (independentes do zoom do navegador):</p>
+<ul>
+  <li><strong>Aumentar / diminuir fonte</strong> (<code>A+</code> / <code>A−</code>): altera a variável CSS <code>--escala</code>, de 90% a 160%, e a preferência é salva em <code>localStorage</code>, valendo em todas as páginas.</li>
+  <li><strong>Alto contraste</strong>: aplica um tema amarelo sobre preto com contraste muito acima do mínimo exigido.</li>
+  <li><strong>Reduzir movimento</strong>: desliga animações e transições (apoio a pessoas autistas), complementando a media query <code>prefers-reduced-motion</code>.</li>
+  <li><strong>VLibras</strong>: o widget oficial do Governo Federal é carregado em todas as páginas, oferecendo tradução para Libras.</li>
+</ul>
+
+<h2>4. Diretrizes da WCAG utilizadas</h2>
+<table>
+  <tr><th>Critério WCAG</th><th>Onde aparece no VivaMais</th></tr>
+  <tr><td>1.1.1 Conteúdo não textual (A)</td><td><code>alt</code> descritivo e significativo em todas as imagens; ícones decorativos com <code>aria-hidden</code>.</td></tr>
+  <tr><td>1.3.1 Informações e relações (A)</td><td>HTML semântico: <code>header</code>, <code>nav</code>, <code>main</code>, <code>footer</code>, listas, rótulos ligados aos campos.</td></tr>
+  <tr><td>1.4.3 Contraste mínimo (AA)</td><td>Paleta testada (texto ≥ 4,5:1). Verificado com o motor axe-core: 0 violações de contraste, inclusive no modo de alto contraste.</td></tr>
+  <tr><td>1.4.4 Redimensionar texto (AA)</td><td>Botões próprios de aumento de fonte até 160%, sem quebrar o layout (unidades relativas).</td></tr>
+  <tr><td>2.1.1 Teclado (A)</td><td>Todo o fluxo é operável por Tab, Enter, Espaço e setas. Link “Pular para o conteúdo”.</td></tr>
+  <tr><td>2.2.1 Tempo ajustável (A)</td><td>Na tela de login, aviso antecipado de expiração com o botão “Preciso de mais tempo”.</td></tr>
+  <tr><td>2.2.2 Pausar, parar, ocultar (A)</td><td>Controle “Reduzir movimento” desliga qualquer animação.</td></tr>
+  <tr><td>2.4.7 Foco visível (AA)</td><td>Contorno de foco espesso e com bom contraste em todos os elementos interativos.</td></tr>
+  <tr><td>2.5.5 / 2.5.8 Tamanho do alvo</td><td>Botões e campos com no mínimo 48–56 px de altura e bom espaçamento.</td></tr>
+  <tr><td>3.2.3 / 3.2.4 Navegação e identificação consistentes (AA)</td><td>Cabeçalho, menu e rodapé idênticos em todas as páginas; mesmos rótulos.</td></tr>
+  <tr><td>3.2.6 Ajuda consistente (A)</td><td>A barra de acessibilidade e o VLibras ficam sempre no mesmo lugar.</td></tr>
+  <tr><td>3.3.1 / 3.3.3 Identificação e sugestão de erro (A/AA)</td><td>Mensagens de erro claras, em português, ligadas ao campo por <code>aria-describedby</code> e marcadas com <code>aria-invalid</code>.</td></tr>
+  <tr><td>3.3.2 Rótulos ou instruções (A)</td><td><code>label</code> em todos os campos, <code>placeholder</code>/máscara no CPF e textos de ajuda.</td></tr>
+  <tr><td>3.3.8 Autenticação acessível (AA)</td><td>Login sem teste cognitivo (sem puzzle/captcha); <code>autocomplete</code> nos campos.</td></tr>
+  <tr><td>3.1.1 Idioma da página (A)</td><td><code>lang="pt-BR"</code> em todas as páginas.</td></tr>
+  <tr><td>4.1.2 Nome, função, valor (A)</td><td>Uso de WAI-ARIA nos componentes personalizados (ver seção 5).</td></tr>
+</table>
+<p class="pequeno">
+  Validação automatizada: todas as seis páginas foram auditadas com o motor <strong>axe-core 4</strong>
+  (conjuntos WCAG 2.0/2.1/2.2, níveis A e AA), com <strong>zero violações</strong> em modo normal e em alto contraste.
+</p>
+
+<h2>5. Uso de WAI-ARIA (função de cada elemento)</h2>
+<p>A solução usa WAI-ARIA em mais de dois pontos. Destacamos os principais:</p>
+<h3>5.1 Grupo de opções de especialidade — <code>role="radiogroup"</code></h3>
+<p>
+  No Passo 1, as especialidades formam um grupo de rádio personalizado. O contêiner usa
+  <code>role="radiogroup"</code> e cada opção usa <code>role="radio"</code> com
+  <code>aria-checked</code> (true/false). <strong>Função:</strong> informa à tecnologia assistiva que
+  as opções são mutuamente exclusivas e qual está selecionada. A navegação segue o padrão de
+  teclado esperado: as <strong>setas</strong> movem e selecionam a opção, e apenas o item ativo fica
+  na ordem de tabulação (<code>tabindex</code> gerenciado por código).
+</p>
+<h3>5.2 Região de status — <code>role="status" aria-live="polite"</code></h3>
+<p>
+  Mensagens como “Especialidade selecionada: …”, “Rascunho salvo” e as confirmações são anunciadas
+  por uma região <code>aria-live="polite"</code>. <strong>Função:</strong> comunica mudanças de estado a
+  quem usa leitor de tela <em>sem interromper</em> a leitura em curso. Escolhemos “polite” (e não
+  “assertive”) por ser menos intrusivo — uma recomendação importante para usuários autistas.
+</p>
+<h3>5.3 Elementos de apoio</h3>
+<ul>
+  <li><code>aria-describedby</code>: liga cada campo ao seu texto de ajuda e à sua mensagem de erro.</li>
+  <li><code>aria-invalid</code>: marca o campo com erro para a tecnologia assistiva.</li>
+  <li><code>aria-current</code>: indica a página atual no menu e o passo atual na trilha de navegação.</li>
+  <li><code>aria-pressed</code>: estado ligado/desligado dos botões de contraste e de movimento.</li>
+  <li><code>role="alert"</code>: aviso de expiração de sessão no login.</li>
+</ul>
+
+<h2>6. Cobertura para pessoas autistas (TEA)</h2>
+<p>Com base nas diretrizes da COGA (W3C) e nos critérios da WCAG 2.2, aplicamos:</p>
+<ul>
+  <li><strong>Baixa carga cognitiva e previsibilidade</strong>: layout limpo, uma decisão por tela, componentes estáveis e rótulos consistentes (3.2.3/3.2.4).</li>
+  <li><strong>Controle do movimento</strong>: respeito a <code>prefers-reduced-motion</code> e botão manual para reduzir animações (2.2.2).</li>
+  <li><strong>Avisos gentis e não intrusivos</strong>: atualizações por <code>aria-live="polite"</code>.</li>
+  <li><strong>Sem dark patterns</strong>: nada de urgência falsa, labirinto de cancelamento ou confirmshaming; o limite de tempo é ajustável (2.2.1).</li>
+  <li><strong>Ajuda sempre no mesmo lugar</strong> (3.2.6) e linguagem clara em português (3.1.5).</li>
+</ul>
+
+<h2>7. Responsividade e identidade visual (Figma)</h2>
+<p>
+  O layout é responsivo para <strong>smartphone, tablet e desktop</strong> (grades que colapsam em
+  uma coluna, fontes e menus que se ajustam). A identidade visual segue a do Figma: azul
+  institucional, cantos arredondados e a mesma tipografia de interface.
+</p>
+<p>
+  <strong>Diferenças em relação ao Figma, justificadas:</strong> o protótipo e a versão anterior
+  apresentavam telas em formato de comparação (“acessível vs. não acessível”) e em português de
+  Portugal. No projeto final, por decisão do grupo e alinhada ao público-alvo brasileiro,
+  (1) convertemos o texto para <strong>português do Brasil</strong> e (2) transformamos as telas de
+  demonstração em um <strong>fluxo de tarefa real e navegável</strong>, mantendo as cores, o
+  contraste e os componentes. Essas mudanças foram feitas pelo grupo; a IA foi usada como apoio
+  (ver seção 8).
+</p>
+
+<h2>8. Tecnologias e uso de IA</h2>
+<p><strong>Tecnologias:</strong> HTML5, CSS3 e JavaScript puro (sem frameworks), hospedados no GitHub Pages. Widget VLibras (Governo Federal) para Libras. Auditoria com axe-core.</p>
+<p><strong>Ferramenta de IA:</strong> assistente de codificação (modelo de linguagem) usado para acelerar a implementação e a auditoria. Instruções (prompts) principais dadas à IA:</p>
+<ul>
+  <li>“Construir a aplicação VivaMais (agendamento de consulta) em pt-BR, HTML/CSS/JS puro, cobrindo todo o checklist do projeto final: fluxo completo, fonte +/−, alto contraste, VLibras, responsivo, ≥2 elementos WAI-ARIA e conformidade WCAG, além de cobrir pessoas autistas.”</li>
+  <li>“Implementar o grupo de especialidades como <code>radiogroup</code> acessível, navegável por setas, e uma região <code>aria-live</code> para avisos.”</li>
+  <li>“Auditar as páginas com axe-core e corrigir todas as violações, inclusive no modo de alto contraste.”</li>
+</ul>
+<p class="pequeno">Todo o conteúdo textual e as decisões de design foram revisados pelo grupo. As imagens não foram geradas por IA; são de banco público (Pexels).</p>
+
+<h2>9. Declaração de uso pelo público-alvo</h2>
+<div class="decl">
+  <p style="margin:0">
+    Declaramos que, considerando os desafios de interação identificados nas entregas anteriores,
+    a solução VivaMais pode ser usada pelos usuários-alvo nos seguintes níveis:
+  </p>
+  <ul style="margin:8px 0 0">
+    <li><strong>Pessoas idosas (Dona Neuza e Sr. Antônio):</strong> conseguem concluir o caminho feliz
+      de forma <strong>autônoma</strong>. Os alvos grandes atendem aos tremores e à baixa precisão motora;
+      o alto contraste e o aumento de fonte atendem à baixa visão; o fluxo linear com trilha de passos e o
+      limite de tempo ajustável atendem aos lapsos de memória e ao ritmo mais lento.</li>
+    <li><strong>Pessoas autistas:</strong> conseguem usar a solução de forma <strong>autônoma e com baixa
+      sobrecarga</strong>, graças à previsibilidade, à consistência, ao controle de movimento, aos avisos não
+      intrusivos e à ausência de dark patterns.</li>
+  </ul>
+  <p style="margin:8px 0 0" class="pequeno">
+    Ressalva: usuários com letramento digital muito baixo ou com alta necessidade de suporte podem se
+    beneficiar de um primeiro uso acompanhado. Esta declaração será confirmada na avaliação com o
+    usuário-alvo (etapa final do projeto).
+  </p>
+</div>
+
+<h2>10. Links</h2>
+<p>
+  <strong>Projeto publicado (GitHub Pages):</strong>
+  <span class="link">[inserir a URL do novo repositório publicado antes da entrega]</span>
+</p>
+<p>
+  <strong>Protótipo no Figma (aberto para a docente e a monitora):</strong><br>
+  <span class="link">https://www.figma.com/make/Enfa4Z2Pi0OBV9RUdr4lvr/Untitled?p=f&t=IhhF7PU2GkLJJcad-0</span>
+</p>
+
+</body>
+</html>

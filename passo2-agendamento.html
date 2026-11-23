@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passo 2: médico e horário — VivaMais</title>
+  <meta name="description" content="Escolha o médico, a data e o horário da sua consulta no VivaMais.">
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+  <header class="topo">
+    <div class="topo-interno">
+      <a class="marca" href="index.html">
+        <span class="logo" aria-hidden="true">V+</span>
+        <span class="nome">VivaMais<span class="sub">Plano de saúde acessível</span></span>
+        <span class="sr-only">— ir para a página inicial</span>
+      </a>
+      <nav aria-label="Menu principal">
+        <ul class="menu">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="login.html">Entrar</a></li>
+          <li><a href="passo1-especialidade.html" aria-current="page">Agendar consulta</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+
+    <ol class="passos" aria-label="Progresso do agendamento">
+      <li class="concluido">Passo 1 de 3: Especialidade ✓</li>
+      <li aria-current="step">Passo 2 de 3: Médico e horário</li>
+      <li>Passo 3 de 3: Confirmar</li>
+    </ol>
+
+    <h1>Escolha o médico e o horário</h1>
+    <p class="destaque">
+      Especialidade escolhida: <strong id="especialidade-eco">Clínica Geral</strong>.
+    </p>
+
+    <div class="grade-2">
+      <figure>
+        <img src="img/medica.jpg"
+             alt="Médica de jaleco branco, touca e máscara cor-de-rosa segurando um estetoscópio, em um fundo claro."
+             width="1200" height="1800">
+        <figcaption class="credito">Imagem: Pexels (foto 3768131) — uso livre sob a Licença Pexels.</figcaption>
+      </figure>
+
+      <form class="cartao" id="form-agendamento" novalidate>
+
+        <div class="campo">
+          <label for="medico">Médico</label>
+          <span class="ajuda" id="medico-ajuda">Escolha um profissional disponível.</span>
+          <select id="medico" name="medico" aria-describedby="medico-ajuda medico-erro" aria-required="true">
+            <option value="">— Selecione —</option>
+            <option value="Dra. Helena Prado">Dra. Helena Prado</option>
+            <option value="Dr. Marcos Ribeiro">Dr. Marcos Ribeiro</option>
+            <option value="Dra. Sofia Almeida">Dra. Sofia Almeida</option>
+          </select>
+          <p class="mensagem-erro" id="medico-erro">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8v5M12 16.5v.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+            <span>Escolha um médico para continuar.</span>
+          </p>
+        </div>
+
+        <div class="campo">
+          <label for="data">Data da consulta</label>
+          <span class="ajuda" id="data-ajuda">Escolha uma data a partir de hoje.</span>
+          <input id="data" name="data" type="date" aria-describedby="data-ajuda data-erro" aria-required="true">
+          <p class="mensagem-erro" id="data-erro">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8v5M12 16.5v.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+            <span>Escolha uma data válida (de hoje em diante).</span>
+          </p>
+        </div>
+
+        <div class="campo">
+          <label for="hora">Horário</label>
+          <span class="ajuda" id="hora-ajuda">Horários de atendimento: das 8h às 17h.</span>
+          <select id="hora" name="hora" aria-describedby="hora-ajuda hora-erro" aria-required="true">
+            <option value="">— Selecione —</option>
+            <option value="08:30">08:30</option>
+            <option value="10:30">10:30</option>
+            <option value="14:00">14:00</option>
+            <option value="16:30">16:30</option>
+          </select>
+          <p class="mensagem-erro" id="hora-erro">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8v5M12 16.5v.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+            <span>Escolha um horário para continuar.</span>
+          </p>
+        </div>
+
+        <div class="status" id="status-salvo" role="status" aria-live="polite"></div>
+
+        <div class="acoes">
+          <a class="botao botao-secundario" href="passo1-especialidade.html">Voltar</a>
+          <button type="submit" class="botao botao-primario">
+            Continuar
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </form>
+    </div>
+
+  </main>
+
+  <footer class="rodape">
+    <div class="rodape-interno">
+      <div class="creditos-img">
+        <strong>Crédito da imagem:</strong> médica com estetoscópio —
+        <a href="https://www.pexels.com/photo/3768131/">Pexels, foto 3768131</a> (uso livre sob a Licença Pexels).
+      </div>
+      <p style="margin:0">VivaMais · Projeto acadêmico SCC0580 — ICMC-USP · <a href="#conteudo">Voltar ao topo</a></p>
+    </div>
+  </footer>
+
+  <script src="js/layout.js"></script>
+  <script src="js/acessibilidade.js"></script>
+  <script src="js/fluxo.js"></script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Entrar — VivaMais</title>
+  <meta name="description" content="Entre na sua conta VivaMais para agendar uma consulta médica.">
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+  <header class="topo">
+    <div class="topo-interno">
+      <a class="marca" href="index.html">
+        <span class="logo" aria-hidden="true">V+</span>
+        <span class="nome">VivaMais<span class="sub">Plano de saúde acessível</span></span>
+        <span class="sr-only">— ir para a página inicial</span>
+      </a>
+      <nav aria-label="Menu principal">
+        <ul class="menu">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="login.html" aria-current="page">Entrar</a></li>
+          <li><a href="passo1-especialidade.html">Agendar consulta</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <h1>Entrar na sua conta</h1>
+    <p class="destaque">Informe o seu CPF e a sua senha para continuar o agendamento.</p>
+
+    <!-- Aviso de limite de tempo ajustável (WCAG 2.2.1) -->
+    <div class="aviso-tempo" role="alert" id="aviso-tempo" hidden>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <div>
+        <strong id="aviso-tempo-titulo">A sua sessão vai expirar em 1 minuto</strong>
+        <p id="aviso-tempo-texto">Você não vai perder o que preencheu. Se precisar de mais tempo, é só pedir.</p>
+        <button type="button" class="botao" id="btn-mais-tempo">Preciso de mais tempo</button>
+      </div>
+    </div>
+
+    <form class="cartao" id="form-login" novalidate style="max-width:560px">
+
+      <div class="campo">
+        <label for="cpf">CPF</label>
+        <span class="ajuda" id="cpf-ajuda">Digite somente números. Exemplo: 000.000.000-00</span>
+        <input id="cpf" name="cpf" type="text" inputmode="numeric"
+               autocomplete="username" placeholder="000.000.000-00"
+               maxlength="14" aria-describedby="cpf-ajuda cpf-erro" aria-required="true">
+        <p class="mensagem-erro" id="cpf-erro">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8v5M12 16.5v.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+          <span>Informe um CPF com 11 números.</span>
+        </p>
+      </div>
+
+      <div class="campo">
+        <label for="senha">Senha</label>
+        <span class="ajuda" id="senha-ajuda">Sua senha tem pelo menos 6 caracteres.</span>
+        <input id="senha" name="senha" type="password"
+               autocomplete="current-password" placeholder="Digite a sua senha"
+               aria-describedby="senha-ajuda senha-erro" aria-required="true">
+        <p class="mensagem-erro" id="senha-erro">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8v5M12 16.5v.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+          <span>A senha precisa ter pelo menos 6 caracteres.</span>
+        </p>
+      </div>
+
+      <div class="acoes">
+        <a class="botao botao-secundario" href="index.html">Voltar</a>
+        <button type="submit" class="botao botao-primario">
+          Entrar
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </form>
+  </main>
+
+  <footer class="rodape">
+    <div class="rodape-interno">
+      <p style="margin:0">VivaMais · Projeto acadêmico SCC0580 — ICMC-USP · <a href="#conteudo">Voltar ao topo</a></p>
+    </div>
+  </footer>
+
+  <script src="js/layout.js"></script>
+  <script src="js/acessibilidade.js"></script>
+  <script src="js/fluxo.js"></script>
+</body>
+</html>

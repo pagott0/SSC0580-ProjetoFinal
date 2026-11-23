@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passo 1: escolher a especialidade — VivaMais</title>
+  <meta name="description" content="Escolha a especialidade médica para a sua consulta no VivaMais.">
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+  <header class="topo">
+    <div class="topo-interno">
+      <a class="marca" href="index.html">
+        <span class="logo" aria-hidden="true">V+</span>
+        <span class="nome">VivaMais<span class="sub">Plano de saúde acessível</span></span>
+        <span class="sr-only">— ir para a página inicial</span>
+      </a>
+      <nav aria-label="Menu principal">
+        <ul class="menu">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="login.html">Entrar</a></li>
+          <li><a href="passo1-especialidade.html" aria-current="page">Agendar consulta</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+
+    <!-- Trilha de navegação: mostra sempre em que passo o usuário está -->
+    <ol class="passos" aria-label="Progresso do agendamento">
+      <li aria-current="step">Passo 1 de 3: Especialidade</li>
+      <li>Passo 2 de 3: Médico e horário</li>
+      <li>Passo 3 de 3: Confirmar</li>
+    </ol>
+
+    <h1>Qual é o tipo de consulta?</h1>
+    <p class="destaque">Escolha uma especialidade. Você pode mudar depois, se precisar.</p>
+
+    <form id="form-especialidade">
+      <!-- WAI-ARIA #1: grupo de opções (radiogroup) navegável por setas -->
+      <div class="radiogroup" role="radiogroup" aria-labelledby="h-esp" id="grupo-especialidade">
+        <h2 id="h-esp" class="sr-only" style="position:absolute;left:-9999px">Especialidades disponíveis</h2>
+
+        <div class="opcao" role="radio" aria-checked="true" tabindex="0" data-valor="Clínica Geral">
+          <span class="marca-radio" aria-hidden="true"></span>
+          <span class="texto"><strong>Clínica Geral</strong><span>Avaliação de saúde e encaminhamentos</span></span>
+        </div>
+
+        <div class="opcao" role="radio" aria-checked="false" tabindex="-1" data-valor="Cardiologia">
+          <span class="marca-radio" aria-hidden="true"></span>
+          <span class="texto"><strong>Cardiologia</strong><span>Coração e pressão arterial</span></span>
+        </div>
+
+        <div class="opcao" role="radio" aria-checked="false" tabindex="-1" data-valor="Oftalmologia">
+          <span class="marca-radio" aria-hidden="true"></span>
+          <span class="texto"><strong>Oftalmologia</strong><span>Visão e saúde dos olhos</span></span>
+        </div>
+
+        <div class="opcao" role="radio" aria-checked="false" tabindex="-1" data-valor="Geriatria">
+          <span class="marca-radio" aria-hidden="true"></span>
+          <span class="texto"><strong>Geriatria</strong><span>Cuidado integral da terceira idade</span></span>
+        </div>
+      </div>
+
+      <!-- WAI-ARIA #2: região de status (aria-live polite) -->
+      <div class="status" id="status-escolha" role="status" aria-live="polite"></div>
+
+      <div class="acoes">
+        <a class="botao botao-secundario" href="login.html">Voltar</a>
+        <button type="submit" class="botao botao-primario">
+          Continuar
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </form>
+
+  </main>
+
+  <footer class="rodape">
+    <div class="rodape-interno">
+      <p style="margin:0">VivaMais · Projeto acadêmico SCC0580 — ICMC-USP · <a href="#conteudo">Voltar ao topo</a></p>
+    </div>
+  </footer>
+
+  <script src="js/layout.js"></script>
+  <script src="js/acessibilidade.js"></script>
+  <script src="js/fluxo.js"></script>
+</body>
+</html>
